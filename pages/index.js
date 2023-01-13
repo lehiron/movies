@@ -20,7 +20,7 @@ export default function Home({movies}) {
 }
 
 export async function getStaticProps() { 
-  const response = await fetch(`http://localhost:3000/api/movies`)
+  const response = await fetch(`${process.env.VERCEL_URL}:3000/api/movies`)
   const movies = await response.json()
   return{
     props: {movies}
