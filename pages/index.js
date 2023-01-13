@@ -3,17 +3,6 @@ import { useEffect, useState } from "react"
 
 export default function Home({movies}) {
   const [movs, setMovs] = useState(movies)
-  const fetchMovie = async () => { 
-    const response = await fetch("/api/movies")
-    const movies = await response.json()
-    setMovs(movies)
-    console.log(movs)
-  }
-
-  useEffect(()=> { 
-    fetchMovie()
-  },[])
-
   const router = useRouter()
   return (
     <div className="mx-6 mt-5">
