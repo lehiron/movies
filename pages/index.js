@@ -1,8 +1,8 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
-export default function Home() {
-  const [movs, setMovs] = useState([])
+export default function Home({movies}) {
+  const [movs, setMovs] = useState(movies)
   const fetchMovie = async () => { 
     const response = await fetch("/api/movies")
     const movies = await response.json()
@@ -30,3 +30,11 @@ export default function Home() {
     </div>
   )
 }
+
+  export async function getStaticProps() {
+    const response = await fetch(`https://lehiron.com/api/movies`)
+    const movies = await response.json()    
+    return{
+      props: {movies}
+    }
+  }
