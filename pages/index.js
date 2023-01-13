@@ -20,7 +20,7 @@ export default function Home({movies}) {
   )
 }
 
-  export async function getStaticProps() {
+  export async function getServerSideProps(context) {
     const response = await fetch(`https://lehiron.com/api/movies`)
     const movies = await response.json()    
     return{
